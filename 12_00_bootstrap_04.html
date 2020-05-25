@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+  <meta charset="utf-8">
+  <title>Bootstrap feladat</title>
+  <link rel="icon" type="image/gif" href="http://oberding.hu/1/ober_fav.png" sizes="16x16 32x32">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--  <link rel="stylesheet" type="text/css" href="12_00_bootstrap_04.css">-->
+  <!-- Innentől jön a Bootstrap-es beágyazás -->
+  <script src="https://code.jquery.com/jquery.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <!-- Eddig tart a Bootstrap-es beágyazás -->
+  <link rel="stylesheet" type="text/css" href="12_00_bootstrap_04.css">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather:300%7COpen+Sans" rel="stylesheet">
+  <!-- === az előző sor egy Google féle betűkészelet. Ezt mindig a záró head elé kell tenni === -->
+</head>
+
+<body class="main-body">
+  <div class="jumbotron container">
+    <h1 class="text-center">Bootstrap alapok</h1>
+    <p class="text-center">Boostrap alap komponensek, példákkal kezdőknek.</p>
+  </div>
+  <div class="alert alert-info">
+    <p>Gyakran használt összetevők bemutatása és azok használata. Érdemes minden elemnek az oldalon a forráskódját megnézni, mert mindegyik egy-egy példa egyben.</p>
+  </div>
+
+  <div class="page-header">
+    <h1 class="text-center">Rácsrendszer</h1>
+  </div>
+
+  <div class="alert alert-danger"><b>A Bootstrap-rácsrendszer első szabálya: minden oldalnak kell egy konténer.</b></div>
+  <div class="alert alert-danger"><b>A Bootstrap-rácsrendszer második szabálya: konténer után mindig a sorokkal kezdd.</b></div>
+  <div class="alert alert-danger"><b>A Bootstrap-rácsok harmadik szabálya: a sorok után rögtön az oszlopok meghatározása következik.</b></div>
+  <div class="alert alert-warning text-center"><b>Mindig figyelj arra, hogy az oldalad tartalma benne legyen valamilyen konténerben, különben a dolgok különböző helyeken fognak kezdődni az oldaladon.</b></div>
+
+  <div>
+    <h4><span class="text-success text-justify">A Bootstrap-rácsrendszerben ugyanaz a két alapvető elem van, mint bármely más rácsban: sorok (.row) és oszlopok (column, .col). Bármennyi sorod lehet egy oldalon, de összesen 12 oszlop lesz.</span></h4>
+  </div>
+
+  <div><b>A "class="col-xs-6" felépítése:</b>
+    <ol>
+      <li>"col" jelöli a sort</li>
+      <li>"xs" = a telefonoknak</li>
+      <li>"sm" = a tableteknek</li>
+      <li>"md" = a laptopoknak és egyéb közepes méretű képernyőknek</li>
+      <li>"lg" = pedig a legnagyobb kijelzőknek</li>
+    </ol>
+  </div>
+
+  <div>
+    <h3 class="bg-info text-justify">Amikor egy elrendezést (layout) definiálsz egy törési pontra (breakpoint), az elrendezés érvényes lesz arra a törési pontra, és minden e fölötti törési pontra is. Az annál kisebb képernyőkön a dolgok egymás alá rendeződnek (stack).</h3>
+    <h4>Például</h4>
+    <ul>
+      <li><u>"div class="col-sm-6">első oszlop>/div></u></li>
+      <li><u>"div class="col-sm-6">második oszlop>/div></u></li>
+    </ul>
+    <b>Ez az elrendezés a tabletek és az annál nagyobb kijelzőkön két, egymás melletti oszlopot eredményez, míg az okostelefonok kijelzőjén a két oszlop automatikusan <b>egymás alá ugrik</b> az sm töréspont miatt.</b>
+    <div class="row row1">
+      <div class="col-sm-6">
+        <span class="label label-primary">első oszlop és egyben egy címke <small>(primary)</small> is</span>
+      </div>
+      <div class="col-sm-6">
+        <span class="label label-warning">második oszlop és egyben egy címke <small>(warning)</small> is</span>
+      </div>
+    </div>
+    <div><b>Ez pedig azt mondja meg a böngészőnek, hogy a "div" a legkisebb kijelzőktől a legnagyobbakig foglaljon el 12 egységet, a legnagyobbakon viszont csak 6-ot.</b>
+      <ul>
+        <li><u>"div class="col-xs-12 col-lg-6">megjelenéstől függően változó méretű oszlop"/div></u></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row row1">
+    <div class="col-xs-12 col-lg-6">
+      <h3>Rácsok felépítése példa</h3> <img class="img-responsive img-circle" src="http://oberding.hu/pic/bootstrap-grid.png" alt="bootstrap-grid">
+    </div>
+  </div>
+
+  <div>
+    <h3 class="bg-info text-justify">Offset</h3>
+    <p>Előfordul persze néha, hogy a megjelenítendő oszlopok nem adnak ki 12 egységnyi szélességet, és mondjuk nem szeretnénk az oldal bal szélén kezdeni a tartalommal.
+      <br> Az oszlopokat "üres" oszlopokkal el is lehet tolni, így akkor is 12 egységet töltenek ki virtuálisan, ha a valóságban nem.
+      <br> <b>Ezt a .col-*-offset-** osztállyal tudod megadni, ahol a * a törési pontot jelöli, a ** pedig a virtuális üres oszlop nagyságát.</b> <br>Például:</p>
+    <p><b>"div class="col-xs-5 col-xs-offset-3 col-md-6 col-md-offset-2">..."/div"</b></p>
+    <p>Ez a "div" okostelefonokon és tableteken 5 egység széles, és 3 egységgel van jobbra tolva a képernyőn, tableteknél nagyobb eszközökön 6 egység széles, és 2 egységgel van jobbra tolva a képernyőn.
+      <br>Az offset osztállyal tartalmakat mozgathatsz a sorok között, amivel egészen összetett oldalakat tudsz készíteni.</p>
+  </div>
+
+  <div>
+    <h4><span class="text-success text">Példák</span></h4>
+    <h5>Normál 4 egység széles, 3 oszlopban, mobilra. (4*3=12)</h5>
+    <div class="row row1">
+      <div class="col-xs-4">első oszlop xs-4</div>
+      <div class="col-xs-4">második oszlop xs-4</div>
+      <div class="col-xs-4">harmadik oszlop xs-4</div>
+    </div>
+    <h5>Normál 4 egység széles, 3 oszlopban, laptopon (4*3=12) de mobilon egymás alá</h5>
+    <div class="row row1">
+      <div class="col-xs-12 col-sm-4 color">első oszlop xs-4</div>
+      <div class="col-xs-12 col-sm-4 color">második oszlop xs-4</div>
+      <div class="col-xs-12 col-sm-4 color">harmadik oszlop xs-4</div>
+    </div>
+    <br>
+    <div class="row row1">
+      <div class="col-md-2 col-md-offset-9 color">1 oszlop: 2 egység széles 9 oszloppal eltolva</div>
+    </div>
+    <div class="row row1">
+      <div class="col-xs-5 col-xs-offset-3 col-md-6 col-md-offset-2 color2">5 egység széles 3-al eltolva xs-md-n</div>
+    </div>
+  </div>
+
+  <div class="page-header">
+    <h1 class="text-center">Lista csoportok</h1>
+  </div>
+  <div>
+    <ul class="list-group">
+      <li class="list-group-item">Első elem</li>
+      <li class="list-group-item">Második elem</li>
+      <li class="list-group-item">Harmadik elem</li>
+    </ul>
+    <div class="list-group">kattintható változat
+      <a href="#" class="list-group-item">Első link</a>
+      <a href="#" class="list-group-item">Második link</a>
+      <a href="#" class="list-group-item">Harmadik link</a>
+    </div>
+  </div>
+  <br>
+
+  <div class="page-header">
+    <h1 class="text-center">Gombok</h1>
+  </div>
+  <div>
+    <div>
+      <a class="btn btn-primary" href="#">gomb primary</a>
+      <a class="btn btn-default" href="#">gomb default</a>
+      <a class="btn btn-success" href="#">gomb success</a>
+      <a class="btn btn-info" href="#">gomb info</a>
+      <a class="btn btn-warning" href="#">gomb warning</a>
+      <a class="btn btn-danger" href="#">gomb danger</a>
+      <a class="btn btn-link" href="#">gomb link</a>
+    </div>
+    <hr>
+    <div>
+      <a class="btn btn-primary btn-lg" href="#">gomb primary lg <span class="label label-default">címke</span></a>
+      <a class="btn btn-primary btn-md" href="#">gomb primary md</a>
+      <a class="btn btn-primary btn-sm" href="#">gomb primary sm</a>
+      <a class="btn btn-primary btn-xs" href="#">gomb primary xs </a>
+    </div>
+    <hr>
+    <div class="row row1">
+      <div class="col-xs-1 col-xs-offset-5 color">1.oszlop</div>
+      <div class="col-xs-1 col-xs-offset-6 color">1.oszlop</div>
+      <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5 col-md-2 col-md-offset-5 col-lg-2 col-lg-offset-5"><button class="btn btn-success btn-block">széles gomb</button></div>
+    </div>
+    <div>
+      <button class="btn btn-primary btn-block">Szép széles gomb <span class="badge">5</span></button>
+    </div>
+  </div>
+
+  <div class="page-header">
+    <h1 class="text-center">Ikonok</h1>
+  </div>
+  <div>
+    <span class="glyphicon glyphicon-print"></span><a class="btn btn-primary" href="#">Megértést segítő ikonok használata</a>
+    <h4>Megértést segítő ikonok használata <span class="glyphicon glyphicon-search"></span></h4>
+    <h4>Megértést segítő ikonok használata <span class="glyphicon glyphicon-tags"></span></h4>
+    <h4>Megértést segítő ikonok használata <span class="glyphicon glyphicon-user"></span></h4>
+  </div>
+</body>
+
+</html>
